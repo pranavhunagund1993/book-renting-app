@@ -57,14 +57,14 @@ const rentController = {
         try {
             let id = req.params.id
 
-            let extRent = await Rent.findById({ _id: req.params.id })
+            let extRent = await Rent.findById({ _id: id })
 
                 if(!extRent)
-                    return res.status(404).json({ msg: 'Requested rent id not found..'})
+                    return res.status(404).json({ msg: 'Requested Rent id not found..'})
             
             await Rent.findByIdAndDelete({ _id: id})
 
-            return res.status(200).json({ msg: "rent deleted successfully"})
+            return res.status(200).json({ msg: "Rent details deleted successfully"})
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
